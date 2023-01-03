@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:44:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 14:00:26 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/03 16:27:33 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,15 @@ void	check_range(double min, double max, void *value, int *type)
 		i++;
 	}
 }
+
+void	check_valid_divided(int expected, char **split)
+{
+	int i;
+
+	i = 0;
+	while (split[i])
+		i++;
+	if (i != expected)
+		ft_error("Invalid number of arguments", INVALID_ARGUMENTS_ERR);
+}
+

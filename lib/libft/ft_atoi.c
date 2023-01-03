@@ -6,37 +6,53 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:56:50 by mcakay            #+#    #+#             */
-/*   Updated: 2022/07/01 11:32:23 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/03 17:13:46 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "utils.h"
+#include <stdio.h>
+
+int check_error(char *str)
+{
+	int i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	ft_atoi(const char *str)
 {
 	int		i;
 	long	num;
 	int		sign;
+	char 	*tmp;
 
 	i = 0;
 	num = 0;
 	sign = 1;
-	while (*(str + i) == ' ' || (*(str + i) >= 9 && *(str + i) <= 13))
-		i++;
-	if (*(str + i) == '-' || *(str + i) == '+')
+	tmp = ft_strtrim(str, "\n");
+	if (check_error(tmp))
+		ft_error("Invalid input", INVALID_INPUT_ERR);
+	if (*(tmp + i) == '-' || *(tmp + i) == '+')
 	{
-		if (*(str + i) == '-')
+		if (*(tmp + i) == '-')
 			sign = -sign;
 		i++;
 	}
-	while (*(str + i) && ft_isdigit(*(str + i)))
+	while (ft_isdigit(*(tmp + i)))
 	{
-		num = (num * 10) + ((*(str + i) - 48) * sign);
+		num = num * 10 + *(tmp + i) - 48;
 		i++;
-		if (num > 2147483647)
-			return (-1);
-		if (num < -2147483648)
-			return (0);
 	}
-	return (num);
+	return (num * sign);
 }
