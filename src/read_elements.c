@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_elements.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/03 13:48:02 by mcakay            #+#    #+#             */
+/*   Updated: 2023/01/03 13:50:28 by mcakay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "read.h"
 
 void ambient_lightning_read(t_read *read, char **split)
@@ -6,7 +18,9 @@ void ambient_lightning_read(t_read *read, char **split)
 
 	rgb_split = ft_split(split[2], ',');
 	read->ambient_lightning_ratio = ft_atod(split[1]);
+	check_range(0, 1, &read->ambient_lightning_ratio, (int[]){VALUE, DOUBLE});
 	read->ambient_lightning_rgb = ft_atoi_array(rgb_split);
+	check_range(0, 255, read->ambient_lightning_rgb, (int[]){ARRAY, INT});
 	ft_free(rgb_split);
 }
 
@@ -20,8 +34,10 @@ void camera_read(t_read *read, char **split)
 	ft_free(camera_xyz_split);
 	camera_orientation_split = ft_split(split[2], ',');
 	read->camera_orientation = ft_atod_array(camera_orientation_split);
+	check_range(-1, 1, read->camera_orientation, (int[]){ARRAY, DOUBLE});
 	ft_free(camera_orientation_split);
 	read->camera_fov = ft_atoi(split[3]);
+	check_range(0, 180, &read->camera_fov, (int[]){VALUE, INT});
 }
 
 void light_read(t_read *read, char **split)
@@ -33,7 +49,9 @@ void light_read(t_read *read, char **split)
 	read->light_xyz = ft_atod_array(light_xyz_split);
 	ft_free(light_xyz_split);
 	read->light_brightness = ft_atod(split[2]);
+	check_range(0, 1, &read->light_brightness, (int[]){VALUE, DOUBLE});
 	light_rgb_split = ft_split(split[3], ',');
 	read->light_rgb = ft_atoi_array(light_rgb_split);
+	check_range(0, 255, read->light_rgb, (int[]){ARRAY, INT});
 	ft_free(light_rgb_split);
 }

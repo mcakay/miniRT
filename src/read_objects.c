@@ -14,6 +14,7 @@ void sphere_read(t_read *read, char **split)
 	sphere->diameter = ft_atod(split[2]);
 	sphere_rgb_split = ft_split(split[3], ',');
 	sphere->rgb = ft_atoi_array(sphere_rgb_split);
+	check_range(0, 255, sphere->rgb, (int []){ARRAY, INT});
 	ft_free(sphere_rgb_split);
 	insert_sphere(read, sphere);
 }
@@ -32,9 +33,11 @@ void plane_read(t_read *read, char **split)
 	ft_free(plane_xyz_split);
 	plane_orientation_split = ft_split(split[2], ',');
 	plane->orientation = ft_atod_array(plane_orientation_split);
+	check_range(-1, 1, plane->orientation, (int []){ARRAY, DOUBLE});
 	ft_free(plane_orientation_split);
 	plane_rgb_split = ft_split(split[3], ',');
 	plane->rgb = ft_atoi_array(plane_rgb_split);
+	check_range(0, 255, plane->rgb, (int []){ARRAY, INT});
 	ft_free(plane_rgb_split);
 	insert_plane(read, plane);
 }
@@ -53,11 +56,13 @@ void cylinder_read(t_read *read, char **split)
 	ft_free(cylinder_xyz_split);
 	cylinder_orientation_split = ft_split(split[2], ',');
 	cylinder->orientation = ft_atod_array(cylinder_orientation_split);
+	check_range(-1, 1, cylinder->orientation, (int []){ARRAY, DOUBLE});
 	ft_free(cylinder_orientation_split);
 	cylinder->diameter = ft_atod(split[3]);
 	cylinder->height = ft_atod(split[4]);
 	cylinder_rgb_split = ft_split(split[5], ',');
 	cylinder->rgb = ft_atoi_array(cylinder_rgb_split);
+	check_range(0, 255, cylinder->rgb, (int []){ARRAY, INT});
 	ft_free(cylinder_rgb_split);
 	insert_cylinder(read, cylinder);
 }

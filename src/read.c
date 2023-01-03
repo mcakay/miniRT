@@ -15,7 +15,7 @@ void read_file(t_read *read, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		ft_error("Failed to open file", 1);
+		ft_error("Failed to open file", FILE_ERR);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -33,7 +33,7 @@ void read_file(t_read *read, char *file)
 		else if (ft_strncmp(split[0], "cy", 3) == 0)
 			cylinder_read(read, split);
 		else
-			ft_error("Invalid element", 2);
+			ft_error("Invalid element", INVALID_ELEMENT_ERR);
 		ft_free(split);
 		free(line);
 		line = get_next_line(fd);

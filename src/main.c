@@ -1,4 +1,4 @@
-#include "read.h"
+#include "minirt.h"
 
 int main(int argc, char **argv)
 {

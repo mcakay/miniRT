@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "libft.h"
-#include "utils.h"
+#include "check.h"
 #include "objects.h"
 
 typedef struct s_read
@@ -14,7 +14,7 @@ typedef struct s_read
 	int *ambient_lightning_rgb;
 	double *camera_xyz;
 	double *camera_orientation;
-	double camera_fov;
+	int camera_fov;
 	double *light_xyz;
 	double light_brightness;
 	int *light_rgb;
