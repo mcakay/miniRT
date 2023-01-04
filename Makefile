@@ -16,6 +16,10 @@ OBJS = $(subst $(SRC_DIR), $(LIB_DIR), $(SRCS:.c=.o))
 
 LIB = $(LIB_DIR)lib.a
 
+MINILIBX = ./lib/minilibx/minilibx/libmlx.a
+
+FRAMEWORK	= -framework OpenGL -framework AppKit
+
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
@@ -28,8 +32,11 @@ all: $(NAME)
 $(LIB):
 	@make -C $(LIB_DIR)
 
-$(NAME): $(OBJS) $(LIB)  
-	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
+$(MINILIBX):
+	@make -C ./lib/minilibx
+
+$(NAME): $(OBJS) $(LIB) $(MINILIBX) 
+	$(CC) $(CFLAGS) $(FRAMEWORK) $(OBJS) $(LIB) $(MINILIBX) -o $(NAME)
 
 $(LIB_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)

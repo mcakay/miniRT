@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   vec3d_scalar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 16:57:02 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 20:09:34 by mcakay           ###   ########.fr       */
+/*   Created: 2023/01/04 18:23:30 by mcakay            #+#    #+#             */
+/*   Updated: 2023/01/04 18:23:36 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-#define UTILS_H
+#include "vec3d.h"
 
-#define FILE_ERR 1
-#define INVALID_ELEMENT_ERR 2
-#define INVALID_RANGE_ERR 3
-#define INVALID_ARGUMENTS_ERR 4
-#define INVALID_INPUT_ERR 5
-#define USAGE_ERR 6
-#define INVALID_IDENTIFIER_ERR 7
+double distance(t_vec3 u, t_vec3 v)
+{
+	return sqrt(pow(u.x - v.x, 2) + pow(u.y - v.y, 2) + pow(u.z - v.z, 2));
+}
 
-void ft_free(char **strs);
-void ft_error(char *str, int error_code);
-int *ft_atoi_array(char **strs);
-double *ft_atod_array(char **strs);
+double dot(t_vec3 a, t_vec3 b)
+{
+	return (a.x*b.x + a.y*b.y + a.z*b.z);
+}
 
-#endif
+double length_squared(t_vec3 a)
+{
+	return (a.x*a.x + a.y*a.y + a.z*a.z);
+}
+
+double length(t_vec3 v)
+{
+	return sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2));
+}

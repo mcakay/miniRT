@@ -7,13 +7,15 @@ GNL_DIR = ./get_next_line/
 
 LIBFT_DIR = ./libft/
 
+VECLIB_DIR = ./vec_lib/
+
 LIB_DIR = ./lib/
 
 INCLUDE_DIR = ../include/
 
 #Variables
 
-SRCS = $(wildcard $(LIBFT_DIR)*.c $(GNL_DIR)*.c)
+SRCS = $(wildcard $(LIBFT_DIR)*.c $(GNL_DIR)*.c $(VECLIB_DIR)*.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -29,7 +31,7 @@ all: build
 
 build: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) 
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
@@ -41,6 +43,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@make fclean -C ./minilibx
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:44:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 17:55:07 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 20:08:22 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	check_valid_divided(int expected, char **split)
 
 void	check_argument_amount(t_read *read)
 {
-	if (read->ambient_lightning_amount != 1)
+	if (read->ambient_lightning_amount > 1)
 		ft_error("Invalid number of ambient lightning", INVALID_ARGUMENTS_ERR);
-	if (read->camera_amount != 1)
+	if (read->camera_amount > 1)
 		ft_error("Invalid number of camera", INVALID_ARGUMENTS_ERR);
-	if (read->light_amount != 1)
+	if (read->light_amount > 1)
 		ft_error("Invalid number of lights", INVALID_ARGUMENTS_ERR);
 }
