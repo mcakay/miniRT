@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:17 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 08:41:08 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 17:26:11 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(int argc, char **argv)
 	t_read *read;
 
 	read = malloc(sizeof(t_read));
-	init_read(read);
-	read_file(read, argv[1]);
+	init_read(read, argv[1]);
+	read_file(read);
 	//test
 	for (t_sphere *sphere = read->sphere_head; sphere; sphere = sphere->next)
 		printf("Sphere: %.2f %.2f %.2f | %.2f | %d %d %d\n", sphere->xyz[0], sphere->xyz[1], sphere->xyz[2], sphere->diameter, sphere->rgb[0], sphere->rgb[1], sphere->rgb[2]);

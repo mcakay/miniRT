@@ -6,29 +6,31 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:09 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 08:42:03 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 17:55:09 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-void init_read(t_read *read)
+void init_read(t_read *read, char *file)
 {
+	read->ambient_lightning_amount = 0;
+	read->light_amount = 0;
+	read->camera_amount = 0;
 	read->sphere_head = NULL;
 	read->plane_head = NULL;
 	read->cylinder_head = NULL;
+	read->fd = open(file, O_RDONLY);
+	if (read->fd == -1)
+		ft_error("Failed to open file", FILE_ERR);
 }
 
-void read_file(t_read *read, char *file)
+void read_file(t_read *read)
 {
-	int fd;
 	char *line;
 	char **split;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		ft_error("Failed to open file", FILE_ERR);
-	line = get_next_line(fd);
+	line = get_next_line(read->fd);
 	while (line)
 	{
 		split = ft_split(line, ' ');
@@ -44,11 +46,10 @@ void read_file(t_read *read, char *file)
 			plane_read(read, split);
 		else if (ft_strncmp(split[0], "cy", 3) == 0)
 			cylinder_read(read, split);
-		else
-			ft_error("Invalid element", INVALID_ELEMENT_ERR);
 		ft_free(split);
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(read->fd);
 	}
-	close(fd);
+	close(read->fd);
+	check_argument_amount(read);
 }

@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:57:00 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 17:54:06 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 17:54:47 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,15 @@ typedef struct s_read
 	t_sphere *sphere_head;
 	t_plane *plane_head;
 	t_cylinder *cylinder_head;
+	char *file;
+	int fd;
+	int ambient_lightning_amount;
+	int camera_amount;
+	int light_amount;
 }	t_read;
 
-void read_file(t_read *read, char *file);
-void init_read(t_read *read);
+void read_file(t_read *read);
+void init_read(t_read *read, char *file);
 void ambient_lightning_read(t_read *read, char **split);
 void camera_read(t_read *read, char **split);
 void light_read(t_read *read, char **split);
@@ -46,5 +51,6 @@ void cylinder_read(t_read *read, char **split);
 void insert_sphere(t_read *read, t_sphere *sphere);
 void insert_plane(t_read *read, t_plane *plane);
 void insert_cylinder(t_read *read, t_cylinder *cylinder);
+void check_argument_amount(t_read *read);
 
 #endif

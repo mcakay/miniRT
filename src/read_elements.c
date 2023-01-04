@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:48:02 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 15:35:39 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 17:50:10 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void ambient_lightning_read(t_read *read, char **split)
 	read->ambient_lightning_rgb = ft_atoi_array(rgb_split);
 	check_range(0, 255, read->ambient_lightning_rgb, (int[]){ARRAY, INT});
 	ft_free(rgb_split);
+	read->ambient_lightning_amount++;
 }
 
 void camera_read(t_read *read, char **split)
@@ -43,6 +44,7 @@ void camera_read(t_read *read, char **split)
 	ft_free(camera_orientation_split);
 	read->camera_fov = ft_atoi(split[3]);
 	check_range(0, 180, &read->camera_fov, (int[]){VALUE, INT});
+	read->camera_amount++;
 }
 
 void light_read(t_read *read, char **split)
@@ -62,4 +64,5 @@ void light_read(t_read *read, char **split)
 	read->light_rgb = ft_atoi_array(light_rgb_split);
 	check_range(0, 255, read->light_rgb, (int[]){ARRAY, INT});
 	ft_free(light_rgb_split);
+	read->light_amount++;
 }
