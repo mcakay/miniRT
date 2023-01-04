@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:44:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 16:27:33 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 08:42:07 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ void	check_valid_divided(int expected, char **split)
 	if (i != expected)
 		ft_error("Invalid number of arguments", INVALID_ARGUMENTS_ERR);
 }
-

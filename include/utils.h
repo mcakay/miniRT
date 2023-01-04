@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:57:02 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 16:57:03 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 08:40:57 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define INVALID_RANGE_ERR 3
 #define INVALID_ARGUMENTS_ERR 4
 #define INVALID_INPUT_ERR 5
+#define USAGE_ERR 6
 
 void ft_free(char **strs);
 void ft_error(char *str, int error_code);

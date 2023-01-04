@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:17 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 16:27:17 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/04 08:41:08 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int main(int argc, char **argv)
 {
 	if (argc != 2)
-	{
-		printf("Usage: ./minirt [scene.rt]\n");
-		return (1);
-	}
+		ft_error("Usage: ./miniRT <file.rt>", USAGE_ERR);
 	t_read *read;
 
 	read = malloc(sizeof(t_read));
