@@ -6,36 +6,38 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:56:57 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 23:01:07 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/05 13:48:53 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 #define OBJECTS_H
 
+#include "vec3d.h"
+
 typedef struct s_sphere
 {
-	double *xyz;
+	t_vec3 xyz;
 	double diameter;
-	int *rgb;
+	t_vec3 rgb;
 	struct s_sphere *next;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	double *xyz;
-	double *orientation;
-	int *rgb;
+	t_vec3	xyz;
+	t_vec3  orientation;
+	t_vec3	rgb;
 	struct s_plane *next;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	double *xyz;
-	double *orientation;
-	double diameter;
-	double height;
-	int *rgb;
+	t_vec3	xyz;
+	t_vec3	orientation;
+	double	diameter;
+	double	height;
+	t_vec3	rgb;
 	struct s_cylinder *next;
 }	t_cylinder;
 

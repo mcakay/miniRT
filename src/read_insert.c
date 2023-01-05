@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert.c                                           :+:      :+:    :+:   */
+/*   read_insert.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:20 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 23:00:35 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:42:25 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 
 void insert_sphere(t_read *read, t_sphere *sphere)
 {
-	if (read->sphere_head == NULL)
-		read->sphere_head = sphere;
+	if (read->sph_head == NULL)
+		read->sph_head = sphere;
 	else
 	{
-		while (read->sphere_head->next != NULL)
-			read->sphere_head = read->sphere_head->next;
-		read->sphere_head->next = sphere;
+		while (read->sph_head->next != NULL)
+			read->sph_head = read->sph_head->next;
+		read->sph_head->next = sphere;
 	}
 }
 
 void insert_plane(t_read *read, t_plane *plane)
 {
-	if (read->plane_head == NULL)
-		read->plane_head = plane;
+	if (read->pl_head == NULL)
+		read->pl_head = plane;
 	else
 	{
-		while (read->plane_head->next != NULL)
-			read->plane_head = read->plane_head->next;
-		read->plane_head->next = plane;
+		while (read->pl_head->next != NULL)
+			read->pl_head = read->pl_head->next;
+		read->pl_head->next = plane;
 	}
 }
 
 void insert_cylinder(t_read *read, t_cylinder *cylinder)
 {
-	if (read->cylinder_head == NULL)
-		read->cylinder_head = cylinder;
+	if (read->cyl_head == NULL)
+		read->cyl_head = cylinder;
 	else
 	{
-		while (read->cylinder_head->next != NULL)
-			read->cylinder_head = read->cylinder_head->next;
-		read->cylinder_head->next = cylinder;
+		while (read->cyl_head->next != NULL)
+			read->cyl_head = read->cyl_head->next;
+		read->cyl_head->next = cylinder;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:09 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 20:23:19 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:42:44 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void init_read(t_read *read, char *file)
 {
-	read->ambient_lightning_amount = 0;
-	read->light_amount = 0;
-	read->camera_amount = 0;
-	read->sphere_head = NULL;
-	read->plane_head = NULL;
-	read->cylinder_head = NULL;
+	read->amb_l_amount = 0;
+	read->lg_amount = 0;
+	read->cam_amount = 0;
+	read->sph_head = NULL;
+	read->pl_head = NULL;
+	read->cyl_head = NULL;
 	read->fd = open(file, O_RDONLY);
 	if (read->fd == -1)
 		ft_error("Failed to open file", FILE_ERR);

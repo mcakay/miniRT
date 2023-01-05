@@ -18,7 +18,7 @@ LIB = $(LIB_DIR)lib.a
 
 MINILIBX = ./lib/minilibx/minilibx/libmlx.a
 
-FRAMEWORK	= -framework OpenGL -framework AppKit
+FRAMEWORK = -framework OpenGL -framework AppKit
 
 CC = gcc
 
@@ -39,7 +39,7 @@ $(NAME): $(OBJS) $(LIB) $(MINILIBX)
 	$(CC) $(CFLAGS) $(FRAMEWORK) $(OBJS) $(LIB) $(MINILIBX) -o $(NAME)
 
 $(LIB_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR) -I $(LIB_DIR)minilibx/minilibx/mlx.h
 
 run:
 	$(NAME) scenes/scene.rt

@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.h                                            :+:      :+:    :+:   */
+/*   read_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 16:56:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 17:54:39 by mcakay           ###   ########.fr       */
+/*   Created: 2023/01/03 16:27:12 by mcakay            #+#    #+#             */
+/*   Updated: 2023/01/05 14:58:22 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECK_H
-# define CHECK_H
+#include "read.h"
 
-#include "utils.h"
+void ft_free(char **strs)
+{
+	int i;
 
-#define INT 4
-#define DOUBLE 2
-#define ARRAY 3
-#define VALUE 1
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+}
 
-void 	check_range(double min, double max, void *value, int *type);
-void	check_valid_divided(int expected, char **split);
+void ft_error(char *str, int error_code)
+{
+	printf("Error: %s\n", str);
+	exit(error_code);
+}
 
-#endif
+t_vec3	split_vec(char **strs)
+{
+	t_vec3 vec;
+
+	vec.x = ft_atod(strs[0]);
+	vec.y = ft_atod(strs[1]);
+	vec.z = ft_atod(strs[2]);
+	return (vec);
+}

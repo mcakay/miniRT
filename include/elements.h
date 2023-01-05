@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:44:03 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/04 20:45:39 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/05 10:56:58 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 typedef struct s_camera
 {
+	double	v_height;
+	double	v_width;
+	double	focal_length;
 	t_vec3	origin;
 	t_vec3	horizontal;
 	t_vec3	vertical;
