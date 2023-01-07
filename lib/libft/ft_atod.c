@@ -1,6 +1,5 @@
 #include "libft.h"
-#include "utils.h"
-#include "check.h"
+#include "read.h"
 
 double ft_power(int base, int power)
 {
