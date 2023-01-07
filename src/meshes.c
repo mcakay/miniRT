@@ -34,7 +34,7 @@ t_mesh	*mesh(void)
 
 void	mesh_append(t_mesh *self, t_triangle triangle)
 {
-    t_triangle	*temp;
+	t_triangle	*temp;
 	int			i;
 
 	if (!self)
@@ -48,20 +48,20 @@ void	mesh_append(t_mesh *self, t_triangle triangle)
 		i++;
 	}
 	free(temp);
-    self->triangles[i] = triangle;
-    self->size++;
+	self->triangles[i] = triangle;
+	self->size++;
 }
 
 void	move_mesh(t_mesh *mesh, t_vec3 to)
 {
 	int	i;
 
-    i = 0;
+	i = 0;
 	while (i <= mesh->size)
 	{
-		(mesh->triangles[i]).a = add((mesh->triangles[i]).a, to);
-		(mesh->triangles[i]).b = add((mesh->triangles[i]).b, to); 
-		(mesh->triangles[i]).c = add((mesh->triangles[i]).c, to); 
+		mesh->triangles[i].a = add((mesh->triangles[i]).a, to);
+		mesh->triangles[i].b = add((mesh->triangles[i]).b, to);
+		mesh->triangles[i].c = add((mesh->triangles[i]).c, to);
 		i++;
 	}
 }
@@ -81,27 +81,4 @@ void	plane(t_mesh **self, t_objdata *data, t_vec3 center)
 	rotate_by_directions(*self, data->dir);
 	move_mesh(*self, center);
 	calculate_normals(*self);
-}
-
-t_object	object(char *name, t_vec3 center, t_vec3 color, t_objdata data)
-{
-	t_object	obj;
-
-	obj.center = center;
-	obj.color = color;
-	obj.name = name;
-	obj.direction = data.dir;
-	if (ft_strncmp("sp", name, ft_strlen(name)) == 0)
-	{
-		obj.mesh = mesh();
-		drawSphere(data.r, obj.mesh);
-		rotate_by_directions(obj.mesh, data.dir);
-		move_mesh(obj.mesh, center);
-		calculate_normals(obj.mesh);
-	}
-	else if (ft_strncmp("cy", name, ft_strlen(name)) == 0)
-		cylinder(&(obj.mesh), &data, center);
-	else if (ft_strncmp("pl", name, ft_strlen(name)) == 0)
-		plane(&(obj.mesh), &data, center);
-	return (obj);
 }

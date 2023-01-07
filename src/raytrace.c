@@ -30,7 +30,7 @@ double	reverse_equation(t_ray ray, t_vec3 point)
 
 void	each_intersection(t_gen gen, t_hit *hit, double *tmin, t_ray ray)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < gen.scene->object.mesh->size)

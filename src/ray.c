@@ -1,27 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/07 14:25:40 by mcakay            #+#    #+#             */
+/*   Updated: 2023/01/07 14:25:40 by mcakay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
-t_vec3 ray_on_at(t_ray ray, double t)
+t_vec3	ray_on_at(t_ray ray, double t)
 {
-    return (add(ray.origin, mpv(ray.direction, t)));
+	return (add(ray.origin, mpv(ray.direction, t)));
 }
 
-t_ray cr_ray(t_vec3 origin, t_vec3 direction)
+t_ray	cr_ray(t_vec3 origin, t_vec3 direction)
 {
-    t_ray rtn;
+	t_ray	rtn;
 
-    rtn.origin = origin;
-    rtn.direction = direction;
-    return  rtn;
+	rtn.origin = origin;
+	rtn.direction = direction;
+	return (rtn);
 }
 
-t_vec3 direction(t_cam cam, double u, double v)
+t_vec3	direction(t_cam cam, double u, double v)
 {
-    t_vec3 rtn;
-    
-    rtn = sub(mpv(cam.vertical, v), cam.origin);
-    rtn = add(mpv(cam.horizontal, u), rtn);
-    rtn = add(cam.lower_left, rtn);
-    return rtn;
+	t_vec3	rtn;
+
+	rtn = sub(mpv(cam.vertical, v), cam.origin);
+	rtn = add(mpv(cam.horizontal, u), rtn);
+	rtn = add(cam.lower_left, rtn);
+	return (rtn);
 }
 
 t_vec3	ray_color(t_gen gen, t_ray ray)

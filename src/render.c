@@ -6,38 +6,33 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 03:21:42 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/07 11:40:38 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/07 15:34:45 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void render(t_gen gen, FILE *stream)
+//u, v | i, j
+void	render(t_gen gen, FILE *stream)
 {
-	double	u;
-	double	v;
-    t_ray	ray_s;
-    t_vec3	curcol;
-    t_vec3	optimum;
-    t_vec3	temp;
-	for (int j = IMAGE_HEIGHT - 1; j >= 0; --j)
+	double	d[2];
+	t_ray	ray_s;
+	t_vec3	optimum;
+	int		i[2];
+
+	i[1] = (IMAGE_WIDTH / ASPECT_RATIO) - 1;
+	while (i[1] > 0)
 	{
-        for (int i = 0; i < IMAGE_WIDTH; ++i) {
-            for (size_t samp = 0; samp < 1; samp++)
-            {
-                if (i % 2 == 0 || 1)
-                {
-                    u = ((double)(i)) / (IMAGE_WIDTH - 1);
-                    v = ((double)(j)) / (IMAGE_HEIGHT - 1);
-                    ray_s = cr_ray(gen.cam.origin, direction(gen.cam, u, v));
-                    optimum = ray_color(gen, ray_s);
-                    temp = optimum;
-                }
-                else
-                    optimum = temp;
-                curcol = optimum;
-            }
-            write_color(stream, curcol, 1);
-        }
-    }
+		i[0] = 0;
+		while (i[0] < IMAGE_WIDTH)
+		{
+			d[0] = ((double)(i[0])) / (IMAGE_WIDTH - 1);
+			d[1] = ((double)(i[1])) / ((IMAGE_WIDTH / ASPECT_RATIO) - 1);
+			ray_s = cr_ray(gen.cam.origin, direction(gen.cam, d[0], d[1]));
+			optimum = ray_color(gen, ray_s);
+			++i[0];
+			write_color(stream, optimum, 1);
+		}
+		--i[1];
+	}
 }

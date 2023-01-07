@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:44:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/05 14:39:32 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/07 14:24:53 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_range(double min, double max, t_vec3 value)
 
 void	check_valid_divided(int expected, char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (split[i])

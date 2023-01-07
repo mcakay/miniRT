@@ -70,11 +70,14 @@ t_objdata	objdata(double radius, double height, double size, t_vec3 dir)
 }
 
 void	add_scene(t_gen gen, char *name,
-	t_vec3 *center_and_color, t_objdata data)
+	t_vec3 center_and_color[2], t_objdata data)
 {
-	scene_add_back(&(gen.scene),
-		scene_obj(object(name,
-				center_and_color[0],
-				center_and_color[1],
-				data)));
+	t_vec3	center;
+	t_vec3	color;
+	t_scene	*new;
+
+	center = center_and_color[0];
+	color = center_and_color[1];
+	new = scene_obj(object(name, center, color, data));
+	scene_add_back(&(gen.scene), new);
 }

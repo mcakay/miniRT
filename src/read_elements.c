@@ -6,16 +6,16 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:48:02 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/05 15:00:24 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/07 14:24:37 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-void ambient_lightning_read(t_read *read, char **split)
+void	ambient_lightning_read(t_read *read, char **split)
 {
-	char **rgb_s;
-	t_vec3 rgb;
+	char	**rgb_s;
+	t_vec3	rgb;
 
 	check_valid_divided(3, split);
 	rgb_s = ft_split(split[2], ',');
@@ -29,10 +29,10 @@ void ambient_lightning_read(t_read *read, char **split)
 	read->amb_l_amount++;
 }
 
-void camera_read(t_read *read, char **split)
+void	camera_read(t_read *read, char **split)
 {
-	char **cam_xyz_s;
-	char **cam_orient_s;
+	char	**cam_xyz_s;
+	char	**cam_orient_s;
 
 	check_valid_divided(4, split);
 	cam_xyz_s = ft_split(split[1], ',');
@@ -49,11 +49,11 @@ void camera_read(t_read *read, char **split)
 	read->cam_amount++;
 }
 
-void light_read(t_read *read, char **split)
+void	light_read(t_read *read, char **split)
 {
-	char **light_xyz_s;
-	char **light_rgb_s;
-	t_vec3 rgb;
+	char	**light_xyz_s;
+	char	**light_rgb_s;
+	t_vec3	rgb;
 
 	check_valid_divided(4, split);
 	light_xyz_s = ft_split(split[1], ',');
