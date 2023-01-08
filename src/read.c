@@ -6,13 +6,13 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:09 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/07 15:31:10 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:42:44 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-void	init_read(t_read *read, char *file)
+void init_read(t_read *read, char *file)
 {
 	read->amb_l_amount = 0;
 	read->lg_amount = 0;
@@ -25,7 +25,7 @@ void	init_read(t_read *read, char *file)
 		ft_error("Failed to open file", FILE_ERR);
 }
 
-void	identify(char **split, t_read *read)
+void identify(char **split, t_read *read)
 {
 	if (ft_strncmp(split[0], "A", 2) == 0)
 		ambient_lightning_read(read, split);
@@ -43,10 +43,10 @@ void	identify(char **split, t_read *read)
 		ft_error("Invalid identifier", INVALID_IDENTIFIER_ERR);
 }
 
-void	read_file(t_read *read)
+void read_file(t_read *read)
 {
-	char	*line;
-	char	**split;
+	char *line;
+	char **split;
 
 	line = get_next_line(read->fd);
 	while (line)
@@ -55,7 +55,7 @@ void	read_file(t_read *read)
 		{
 			free(line);
 			line = get_next_line(read->fd);
-			continue ;
+			continue;
 		}
 		split = ft_split(line, ' ');
 		identify(split, read);

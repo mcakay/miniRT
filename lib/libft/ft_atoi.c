@@ -6,16 +6,17 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:56:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/07 15:02:15 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/03 17:13:46 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "read.h"
+#include "utils.h"
+#include <stdio.h>
 
-int	check_error(char *str)
+int check_error(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
@@ -34,7 +35,7 @@ int	ft_atoi(const char *str)
 	int		i;
 	long	num;
 	int		sign;
-	char	*tmp;
+	char 	*tmp;
 
 	i = 0;
 	num = 0;
