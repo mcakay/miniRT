@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:56:55 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 03:21:09 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:28:22 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define IMAX 2147483647
 # define EPSILON 0.000001
 # define SECTOR 25
+# define KEY_ESC 53
 
 #include "read.h"
 #include "mlx.h"
@@ -143,9 +144,20 @@ typedef struct s_elements
 	double			inv_det;
 }					t_elements;
 
-//utils
+typedef struct s_render_utils
+{
+	int		i;
+	int		j;
+	int		h;
+	double	u;
+	double	v;
+	t_vec3	curcol;
+	t_vec3	optimum;
+	t_vec3	temp;
+	t_ray	ray_s;
+}	t_render_utils;
+
 double				to_radians(double degrees);
-FILE				*openppm(const char *name, int width, int height);
 void				write_color(t_gen *gen, t_vec3 px_color, t_vec3 xy, int samples);
 int					write_ppm(int red, int green, int blue, FILE *fd);
 void				draw_sphere(double r, t_mesh *self);
@@ -189,5 +201,7 @@ void				avoid_norm(t_triangle *tri, t_vec3 *bot, t_vec3 *top, int i);
 void				rotate_x(double *y, double *z, double angle);
 void				rotate_y(double *x, double *z, double angle);
 void				rotate_z(double *x, double *y, double angle);
+int					xbutton(t_gen *gen);
+int					key(int keycode, t_gen *gen);
 
 #endif

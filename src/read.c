@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:09 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/05 14:42:44 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:15:44 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,38 @@ void init_read(t_read *read, char *file)
 	read->cyl_head = NULL;
 	read->fd = open(file, O_RDONLY);
 	if (read->fd == -1)
-		ft_error("Failed to open file", FILE_ERR);
+		ft_error("Failed to open file", FILE_ERR, -1);
 }
 
-void identify(char **split, t_read *read)
+void identify(char **split, t_read *read, int l)
 {
 	if (ft_strncmp(split[0], "A", 2) == 0)
-		ambient_lightning_read(read, split);
+		ambient_lightning_read(read, split, l);
 	else if (ft_strncmp(split[0], "C", 2) == 0)
-		camera_read(read, split);
+		camera_read(read, split, l);
 	else if (ft_strncmp(split[0], "L", 2) == 0)
-		light_read(read, split);
+		light_read(read, split, l);
 	else if (ft_strncmp(split[0], "sp", 3) == 0)
-		sphere_read(read, split);
+		sphere_read(read, split, l);
 	else if (ft_strncmp(split[0], "pl", 3) == 0)
-		plane_read(read, split);
+		plane_read(read, split, l);
 	else if (ft_strncmp(split[0], "cy", 3) == 0)
-		cylinder_read(read, split);
+		cylinder_read(read, split, l);
 	else
-		ft_error("Invalid identifier", INVALID_IDENTIFIER_ERR);
+		ft_error("Invalid identifier", INVALID_IDENTIFIER_ERR, l);
 }
 
 void read_file(t_read *read)
 {
 	char *line;
+	int	l;
 	char **split;
 
+	l = 0;
 	line = get_next_line(read->fd);
 	while (line)
 	{
+		l++;
 		if (line[0] == '\n')
 		{
 			free(line);
@@ -58,10 +61,10 @@ void read_file(t_read *read)
 			continue;
 		}
 		split = ft_split(line, ' ');
-		identify(split, read);
+		identify(split, read, l);
 		ft_free(split);
 		free(line);
-		check_argument_amount(read);
+		check_argument_amount(read, l);
 		line = get_next_line(read->fd);
 	}
 	close(read->fd);

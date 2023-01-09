@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:12 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/05 14:58:22 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:16:23 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void ft_free(char **strs)
 	free(strs);
 }
 
-void ft_error(char *str, int error_code)
+void ft_error(char *str, int error_code, int l)
 {
-	printf("Error: %s\n", str);
+	printf("Line %d: Error: %s\n", l, str);
 	exit(error_code);
 }
 

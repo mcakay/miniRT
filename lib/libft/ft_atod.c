@@ -23,7 +23,7 @@ double ft_atod(char *str)
 	if (ft_strchr(str, '.') == NULL)
 		return (ft_atoi(str));
 	split = ft_split(str, '.');
-	check_valid_divided(2, split);
+	check_valid_divided(2, split, -1);
 	if (ft_atoi(split[0]) < 0)
 		result = ft_atoi(split[0]) - (double)ft_atoi(split[1]) / ft_power(10, ft_strlen(split[1]));
 	else

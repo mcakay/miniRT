@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:57:00 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 02:52:25 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:11:24 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_read
 
 //read_utils.c
 void ft_free(char **strs);
-void ft_error(char *str, int error_code);
+void ft_error(char *str, int error_code, int l);
 t_vec3	split_vec(char **strs);
 
 //read.c
@@ -84,14 +84,14 @@ void read_file(t_read *read);
 void init_read(t_read *read, char *file);
 
 //read_elements.c
-void ambient_lightning_read(t_read *read, char **split);
-void camera_read(t_read *read, char **split);
-void light_read(t_read *read, char **split);
+void ambient_lightning_read(t_read *read, char **split, int l);
+void camera_read(t_read *read, char **split, int l);
+void light_read(t_read *read, char **split, int l);
 
 //read_objects.c
-void plane_read(t_read *read, char **split);
-void sphere_read(t_read *read, char **split);
-void cylinder_read(t_read *read, char **split);
+void plane_read(t_read *read, char **split, int l);
+void sphere_read(t_read *read, char **split, int l);
+void cylinder_read(t_read *read, char **split, int l);
 
 //read_insert.c
 void insert_sphere(t_read *read, t_sphere *sphere);
@@ -99,8 +99,8 @@ void insert_plane(t_read *read, t_plane *plane);
 void insert_cylinder(t_read *read, t_cylinder *cylinder);
 
 //read_check.c
-void check_argument_amount(t_read *read);
-void	check_range(double min, double max, t_vec3 value);
-void check_valid_divided(int expected, char **split);
+void	check_argument_amount(t_read *read, int l);
+void	check_range(double min, double max, t_vec3 value, int l);
+void	check_valid_divided(int expected, char **split, int l);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:56:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 03:08:36 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:13:04 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	tmp = ft_strtrim(str, "\n");
 	if (check_error(tmp))
-		ft_error("Invalid input", INVALID_INPUT_ERR);
+		ft_error("Invalid input", INVALID_INPUT_ERR, -1);
 	if (*(tmp + i) == '-' || *(tmp + i) == '+')
 	{
 		if (*(tmp + i) == '-')
