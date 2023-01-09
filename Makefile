@@ -22,7 +22,7 @@ FRAMEWORK = -framework OpenGL -framework AppKit
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 
 RM = rm -f
 

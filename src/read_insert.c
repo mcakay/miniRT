@@ -14,36 +14,45 @@
 
 void	insert_sphere(t_read *read, t_sphere *sphere)
 {
+	t_sphere	*temp;
+
 	if (read->sph_head == NULL)
 		read->sph_head = sphere;
 	else
 	{
-		while (read->sph_head->next != NULL)
-			read->sph_head = read->sph_head->next;
-		read->sph_head->next = sphere;
+		temp = read->sph_head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = sphere;
 	}
 }
 
 void	insert_plane(t_read *read, t_plane *plane)
 {
+	t_plane	*temp;
+
 	if (read->pl_head == NULL)
 		read->pl_head = plane;
 	else
 	{
-		while (read->pl_head->next != NULL)
-			read->pl_head = read->pl_head->next;
-		read->pl_head->next = plane;
+		temp = read->pl_head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = plane;
 	}
 }
 
 void	insert_cylinder(t_read *read, t_cylinder *cylinder)
 {
+	t_cylinder	*temp;
+
 	if (read->cyl_head == NULL)
 		read->cyl_head = cylinder;
 	else
 	{
-		while (read->cyl_head->next != NULL)
-			read->cyl_head = read->cyl_head->next;
-		read->cyl_head->next = cylinder;
+		temp = read->cyl_head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = cylinder;
 	}
 }

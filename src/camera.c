@@ -45,6 +45,6 @@ void	init_cam(t_gen *gen, t_image img)
 	gen->cam.lower_left = add(neg(dvd(gen->cam.horizontal, 2)),
 			gen->cam.lower_left);
 	gen->cam.lower_left = add(img.origin, gen->cam.lower_left);
-	gen->cam.win_x = 1024;
+	gen->cam.win_x = 1920;
 	gen->cam.win_y = (int)gen->cam.win_x / img.aspect_ratio;
 }

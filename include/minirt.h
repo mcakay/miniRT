@@ -17,7 +17,7 @@
 # define MYRAND_MAX 0xFFFF
 # define IMAX 2147483647
 # define EPSILON 0.000001
-# define SECTOR 25
+# define SECTOR 40
 # define KEY_ESC 53
 
 # include "mlx.h"
@@ -110,6 +110,16 @@ typedef struct s_gen
 	void			*win;
 }					t_gen;
 
+typedef struct s_th
+{
+	pthread_t		thread;
+	pthread_mutex_t	*mutex;
+	int				id;
+	t_gen			*gen;
+	int				h;
+	int				w;
+}	t_th;
+
 typedef struct s_hit
 {
 	double			t;
@@ -150,6 +160,8 @@ typedef struct s_render_utils
 	int				h;
 	double			u;
 	double			v;
+	int				end;
+	int				till;
 	t_vec3			curcol;
 	t_vec3			optimum;
 	t_vec3			temp;
@@ -165,7 +177,6 @@ float				rad_to_deg(float rad);
 void				rotate(t_mesh *mesh, float angle, int axis);
 void				rotate_by_directions(t_mesh *mesh, t_vec3 norms);
 t_vec3				direction_to_angle(t_vec3 dir);
-void				render(t_gen *gen, int h, int w);
 int					shadow_ray(t_vec3 l, t_scene *temp, t_ray ray, void *not);
 int					check_intersections(t_scene *temp, t_ray ray, t_hit *hit);
 t_vec3				ray_color(t_gen *gen, t_ray ray);
@@ -202,5 +213,5 @@ void				rotate_y(double *x, double *z, double angle);
 void				rotate_z(double *x, double *y, double angle);
 int					xbutton(t_gen *gen);
 int					key(int keycode, t_gen *gen);
-
+void				pre_render(t_gen *gen, int h, int w);
 #endif

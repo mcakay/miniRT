@@ -16,6 +16,7 @@
 # include "get_next_line.h"
 # include "libft.h"
 # include "vec3d.h"
+# include <pthread.h>
 # include <fcntl.h>
 # include <stdio.h>
 

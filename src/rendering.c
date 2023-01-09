@@ -12,31 +12,57 @@
 
 #include "minirt.h"
 
-void	render(t_gen *gen, int h, int w)
+void	*render(void *p)
 {
 	t_render_utils	util;
+	t_th			*t;
 
-	util.j = h - 1;
+	t = (t_th *)p;
+	util.j = t->h - t->id - 1;
+	util.ray_s.origin = t->gen->cam.origin;
 	while (util.j >= 0)
 	{
+		util.v = ((double)(util.j)) / (t->h - 1);
 		util.i = -1;
-		while (++util.i < w)
+		while (++util.i < t->w)
 		{
-			if (util.i % 8 == 0)
-			{
-				util.u = ((double)(util.i)) / (w - 1);
-				util.v = ((double)(util.j)) / (h - 1);
-				util.ray_s = cr_ray(gen->cam.origin, direction(gen->cam, util.u,
-							util.v));
-				util.optimum = ray_color(gen, util.ray_s);
-				util.temp = util.optimum;
-			}
-			else
-				util.optimum = util.temp;
-			util.curcol = util.optimum;
-			write_color(gen, util.curcol, vec3(w - util.i, h - util.j, 0), 1);
+			util.u = ((double)(util.i)) / (t->w - 1);
+			util.ray_s.direction = direction(t->gen->cam, util.u, util.v);
+			util.optimum = ray_color(t->gen, util.ray_s);
+			pthread_mutex_lock(t->mutex);
+			write_color(t->gen, util.optimum,
+				vec3(t->w - util.i, t->h - util.j, 0), 1);
+			pthread_mutex_unlock(t->mutex);
 			util.h++;
 		}
-		util.j--;
+		util.j -= 10;
 	}
+	return (NULL);
+}
+
+void	pre_render(t_gen *gen, int h, int w)
+{
+	t_th			t[10];
+	pthread_mutex_t	m;
+	int				i;
+
+	i = 0;
+	pthread_mutex_init(&m, NULL);
+	while (i < 10)
+	{
+		t[i].gen = gen;
+		t[i].h = h;
+		t[i].w = w;
+		t[i].id = i;
+		t[i].mutex = &m;
+		pthread_create(&t[i].thread, NULL, &render, &t[i]);
+		i++;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		pthread_join(t[i].thread, NULL);
+		i++;
+	}
+	pthread_mutex_destroy(&m);
 }

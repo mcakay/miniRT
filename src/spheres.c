@@ -36,7 +36,7 @@ t_utils	initutils(void)
 	t_utils	utils;
 
 	utils.pi = 3.141;
-	utils.di = 0.0667;
+	utils.di = 0.04;
 	utils.dj = 0.1;
 	utils.db = utils.di * 2 * utils.pi;
 	utils.da = utils.dj * utils.pi;

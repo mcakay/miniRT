@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	read_file(read);
 	init_gen(&gen, read, &img);
 	add_objects(&gen, read);
-	render(&gen, gen.cam.win_y, gen.cam.win_x);
+	pre_render(&gen, gen.cam.win_y, gen.cam.win_x);
 	mlx_hook(gen.win, 17, 0, &xbutton, &gen);
 	mlx_hook(gen.win, 2, 0, &key, &gen);
 	mlx_loop(gen.mlx);
