@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:57:00 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/05 14:58:34 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 02:52:25 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "libft.h"
-#include "objects.h"
+#include "vec3d.h"
 
 //error codes
 #define FILE_ERR 1
@@ -27,6 +27,32 @@
 #define INVALID_INPUT_ERR 5
 #define USAGE_ERR 6
 #define INVALID_IDENTIFIER_ERR 7
+
+typedef struct s_sphere
+{
+	t_vec3 xyz;
+	double diameter;
+	t_vec3 rgb;
+	struct s_sphere *next;
+}	t_sphere;
+
+typedef struct s_plane
+{
+	t_vec3	xyz;
+	t_vec3  orientation;
+	t_vec3	rgb;
+	struct s_plane *next;
+}	t_plane;
+
+typedef struct s_cylinder
+{
+	t_vec3	xyz;
+	t_vec3	orientation;
+	double	diameter;
+	double	height;
+	t_vec3	rgb;
+	struct s_cylinder *next;
+}	t_cylinder;
 
 typedef struct s_read
 {

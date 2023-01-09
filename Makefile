@@ -35,11 +35,11 @@ $(LIB):
 $(MINILIBX):
 	@make -C ./lib/minilibx
 
-$(NAME): $(OBJS) $(LIB) $(MINILIBX) 
-	$(CC) $(CFLAGS) $(FRAMEWORK) $(OBJS) $(LIB) $(MINILIBX) -o $(NAME)
+$(NAME): $(MINILIBX) $(OBJS) $(LIB) 
+	$(CC) $(CFLAGS) $(FRAMEWORK) $(OBJS) $(LIB) $(MINILIBX) -I ./lib/minilibx/minilibx -o $(NAME)
 
 $(LIB_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR) -I $(LIB_DIR)minilibx/minilibx/mlx.h
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR) -I ./lib/minilibx/minilibx
 
 run:
 	$(NAME) scenes/scene.rt

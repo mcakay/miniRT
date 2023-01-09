@@ -7,7 +7,7 @@ GNL_DIR = ./get_next_line/
 
 LIBFT_DIR = ./libft/
 
-VECLIB_DIR = ./vec_lib/
+VECLIB_DIR = ./veclib/
 
 LIB_DIR = ./lib/
 

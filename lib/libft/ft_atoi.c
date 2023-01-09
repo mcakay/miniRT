@@ -6,13 +6,12 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:56:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 17:13:46 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 03:08:36 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "utils.h"
-#include <stdio.h>
+#include "read.h"
 
 int check_error(char *str)
 {
