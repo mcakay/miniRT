@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ialgac <ialgac@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 10:52:12 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 05:42:24 by mcakay           ###   ########.fr       */
+/*   Created: 2023/01/09 06:45:57 by ialgac            #+#    #+#             */
+/*   Updated: 2023/01/09 06:47:11 by ialgac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "../lib/minilibx/minilibx/mlx.h"
 
 double	to_radians(double degree)
 {

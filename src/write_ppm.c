@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   write_ppm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ialgac <ialgac@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 01:01:20 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 03:29:27 by mcakay           ###   ########.fr       */
+/*   Created: 2023/01/09 06:46:16 by ialgac            #+#    #+#             */
+/*   Updated: 2023/01/09 06:47:04 by ialgac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "../lib/minilibx/minilibx/mlx.h"
 
 double	my_clamp(double num, double low, double high)
 {
