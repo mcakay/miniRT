@@ -6,13 +6,12 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:56:55 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 05:28:22 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:40:49 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
-
 
 # define PI 3.1415926
 # define MYRAND_MAX 0xFFFF
@@ -21,8 +20,8 @@
 # define SECTOR 25
 # define KEY_ESC 53
 
-#include "read.h"
-#include "mlx.h"
+# include "mlx.h"
+# include "read.h"
 
 typedef struct s_point
 {
@@ -146,27 +145,27 @@ typedef struct s_elements
 
 typedef struct s_render_utils
 {
-	int		i;
-	int		j;
-	int		h;
-	double	u;
-	double	v;
-	t_vec3	curcol;
-	t_vec3	optimum;
-	t_vec3	temp;
-	t_ray	ray_s;
-}	t_render_utils;
+	int				i;
+	int				j;
+	int				h;
+	double			u;
+	double			v;
+	t_vec3			curcol;
+	t_vec3			optimum;
+	t_vec3			temp;
+	t_ray			ray_s;
+}					t_render_utils;
 
 double				to_radians(double degrees);
-void				write_color(t_gen *gen, t_vec3 px_color, t_vec3 xy, int samples);
-int					write_ppm(int red, int green, int blue, FILE *fd);
+void				write_color(t_gen *gen, t_vec3 px_color, t_vec3 xy,
+						int samples);
 void				draw_sphere(double r, t_mesh *self);
 double				max(double x, double y);
 float				rad_to_deg(float rad);
 void				rotate(t_mesh *mesh, float angle, int axis);
 void				rotate_by_directions(t_mesh *mesh, t_vec3 norms);
 t_vec3				direction_to_angle(t_vec3 dir);
-void				render(t_gen *gen, int height, int width);
+void				render(t_gen *gen, int h, int w);
 int					shadow_ray(t_vec3 l, t_scene *temp, t_ray ray, void *not);
 int					check_intersections(t_scene *temp, t_ray ray, t_hit *hit);
 t_vec3				ray_color(t_gen *gen, t_ray ray);
@@ -193,11 +192,11 @@ t_vec3				point_light(t_gen *gen, t_hit *h, t_point light,
 int					call_back(t_ray ray, t_triangle tris, double *value);
 int					det_check(t_elements elm, t_hit *hit);
 int					intersect_triangle(t_ray ray, t_triangle tri, t_hit *hit);
-double				to_radians(double degree);
 void				init_cam(t_gen *gen, t_image img);
 void				cylinder(t_mesh **self, t_cyl *data, t_vec3 center);
 t_vec3				direction(t_cam cam, double u, double v);
-void				avoid_norm(t_triangle *tri, t_vec3 *bot, t_vec3 *top, int i);
+void				avoid_norm(t_triangle *tri, t_vec3 *bot, t_vec3 *top,
+						int i);
 void				rotate_x(double *y, double *z, double angle);
 void				rotate_y(double *x, double *z, double angle);
 void				rotate_z(double *x, double *y, double angle);

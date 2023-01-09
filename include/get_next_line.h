@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 04:27:54 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/02 17:29:43 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 06:02:48 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 45
+#  define BUFFER_SIZE 3
 # endif
 
 int		ft_n_gnl(char *s1);

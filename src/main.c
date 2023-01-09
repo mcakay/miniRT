@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:17 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 05:27:42 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 06:22:34 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	add_objects(t_gen *gen, t_read *read)
 	cl = read->cyl_head;
 	while (sp)
 	{
-		add_sph(gen, sp->xyz, sp->rgb, cyldata(sp->diameter, 0, 0, vec3(0, 0, -1)));
+		add_sph(gen, sp->xyz, sp->rgb, cyldata(sp->diameter, 0, 0,
+				vec3(0, 0, -1)));
 		sp = sp->next;
 	}
 	while (pl)
@@ -43,7 +44,8 @@ void	add_objects(t_gen *gen, t_read *read)
 	}
 	while (cl)
 	{
-		add_cyl(gen, cl->xyz, cl->rgb, cyldata(cl->diameter, cl->height, 0, cl->orientation));
+		add_cyl(gen, cl->xyz, cl->rgb, cyldata(cl->diameter, cl->height, 0,
+				cl->orientation));
 		cl = cl->next;
 	}
 }
@@ -76,7 +78,8 @@ void	init_gen(t_gen *gen, t_read *read, t_image *img)
 	init_img(img);
 	init_cam(gen, *img);
 	gen->scene = NULL;
-	gen->win = mlx_new_window(gen->mlx, gen->cam.win_x, gen->cam.win_y, "miniRT");
+	gen->win = mlx_new_window(gen->mlx, gen->cam.win_x, gen->cam.win_y,
+			"miniRT");
 	gen->light.center = vec3(0, 0, 0);
 	gen->light.brightness = 0.05;
 	gen->light.color = vec3(0.01, 0.01, 0.01);
@@ -85,7 +88,7 @@ void	init_gen(t_gen *gen, t_read *read, t_image *img)
 	init_light(gen, read);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_gen	gen;
 	t_image	img;

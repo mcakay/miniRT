@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:04:06 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/03 10:23:55 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 05:40:35 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-double ft_atod(char *str);
+double	ft_atod(char *str);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

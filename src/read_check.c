@@ -6,7 +6,7 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 13:44:50 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 05:06:07 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 06:36:07 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,23 @@ void	check_valid_divided(int expected, char **split, int l)
 void	check_argument_amount(t_read *read, int l)
 {
 	if (read->amb_l_amount > 1)
-		ft_error("Invalid number of ambient lightning", INVALID_ARGUMENTS_ERR, l);
+		ft_error("Invalid number of ambient lightning", INVALID_ARGUMENTS_ERR,
+			l);
 	if (read->cam_amount > 1)
 		ft_error("Invalid number of camera", INVALID_ARGUMENTS_ERR, l);
 	if (read->lg_amount > 1)
 		ft_error("Invalid number of lights", INVALID_ARGUMENTS_ERR, l);
+}
+
+void	is_rt(char *str)
+{
+	int	len;
+
+	if (!str)
+		ft_error("Invalid file extension", INVALID_FILE_EXT_ERR, -1);
+	len = ft_strlen(str);
+	if (len < 3)
+		ft_error("Invalid file extension", INVALID_FILE_EXT_ERR, -1);
+	if (!(str[len - 1] == 't' && str[len - 2] == 'r' && str[len - 3] == '.'))
+		ft_error("Invalid file extension", INVALID_FILE_EXT_ERR, -1);
 }

@@ -6,13 +6,13 @@
 /*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:27:09 by mcakay            #+#    #+#             */
-/*   Updated: 2023/01/09 05:15:44 by mcakay           ###   ########.fr       */
+/*   Updated: 2023/01/09 06:34:30 by mcakay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-void init_read(t_read *read, char *file)
+void	init_read(t_read *read, char *file)
 {
 	read->amb_l_amount = 0;
 	read->lg_amount = 0;
@@ -20,12 +20,13 @@ void init_read(t_read *read, char *file)
 	read->sph_head = NULL;
 	read->pl_head = NULL;
 	read->cyl_head = NULL;
+	read->file = file;
 	read->fd = open(file, O_RDONLY);
 	if (read->fd == -1)
 		ft_error("Failed to open file", FILE_ERR, -1);
 }
 
-void identify(char **split, t_read *read, int l)
+void	identify(char **split, t_read *read, int l)
 {
 	if (ft_strncmp(split[0], "A", 2) == 0)
 		ambient_lightning_read(read, split, l);
@@ -43,13 +44,14 @@ void identify(char **split, t_read *read, int l)
 		ft_error("Invalid identifier", INVALID_IDENTIFIER_ERR, l);
 }
 
-void read_file(t_read *read)
+void	read_file(t_read *read)
 {
-	char *line;
-	int	l;
-	char **split;
+	char	*line;
+	int		l;
+	char	**split;
 
 	l = 0;
+	is_rt(read->file);
 	line = get_next_line(read->fd);
 	while (line)
 	{
@@ -58,7 +60,7 @@ void read_file(t_read *read)
 		{
 			free(line);
 			line = get_next_line(read->fd);
-			continue;
+			continue ;
 		}
 		split = ft_split(line, ' ');
 		identify(split, read, l);
